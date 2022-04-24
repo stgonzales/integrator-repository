@@ -5,7 +5,7 @@
   "repository": "git@github.com:stgonzales/integrator-repository.git",
   "license": "MIT",
   "scripts": {
-    "start": "yarn build && yarn serve",
+    "start": "yarn serve",
     "dev": "ts-node-dev --inspect --transpile-only --ignore-watch node_modules src/server.ts",
     "build": "tsc",
     "serve": "node build/src/server.js",
