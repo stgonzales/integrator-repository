@@ -1,12 +1,14 @@
 {
   "name": "integrator-repository",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "./build/src/server.js",
   "repository": "git@github.com:stgonzales/integrator-repository.git",
   "license": "MIT",
   "scripts": {
+    "start": "yarn build && yarn serve",
     "dev": "ts-node-dev --inspect --transpile-only --ignore-watch node_modules src/server.ts",
     "build": "tsc",
+    "serve": "node build/src/server.js",
     "test": "jest --coverage"
   },
   "dependencies": {
