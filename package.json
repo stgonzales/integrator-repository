@@ -5,12 +5,13 @@
   "repository": "git@github.com:stgonzales/integrator-repository.git",
   "license": "MIT",
   "scripts": {
-    "start": "yarn serve",
+    "start": "concurrently \" yarn serve:server\" \" yarn serve:queue\"",
     "dev": "concurrently \" yarn dev:server\" \" yarn dev:queue\"",
     "dev:server": "ts-node-dev --inspect --transpile-only --ignore-watch node_modules src/server.ts",
     "dev:queue": "ts-node-dev --inspect --transpile-only --ignore-watch node_modules src/queue.ts",
     "build": "tsc",
-    "serve": "node -r dotenv/config build/src/server.js",
+    "serve:server": "node -r dotenv/config build/src/server.js",
+    "serve:queue": "node -r dotenv/config build/src/queue.js",
     "test": "jest --coverage"
   },
   "dependencies": {
