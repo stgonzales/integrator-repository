@@ -1,1 +1,1 @@
-export { default as NewAttendeeMail } from './NewAttendeeMail'
+export { default as NewAttendee } from './NewAttendee'
