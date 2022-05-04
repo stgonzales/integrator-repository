@@ -11,7 +11,15 @@ export default {
   worker: new Worker(
     'NewAttendee',
     async ({ data }: Job) => {
-      const { email, first_name, last_name, order_id, qrcode } = data
+      const {
+        id,
+        email,
+        first_name,
+        last_name,
+        order_id,
+        emp_cnpj,
+        classificacao,
+      } = data
 
       await Mail.sendMail({
         from: 'Queue Test <queue@gmail.com>',
@@ -21,11 +29,11 @@ export default {
       })
 
       const pool = await new sql.ConnectionPool(dbsettings).connect()
-      const result = await pool.query(`
+      await pool.query(`
         INSERT INTO integracao_externa
-            (n_folha, n_identificador, nome, email)
-        VALUES ('${order_id}', '${qrcode}', '${first_name} ${last_name}', '${email}')`)
-      console.log(result)
+            (n_folha, n_identificador, nome, email, empresa_cnpj, estado, classificacao)
+        VALUES ('${order_id}', '${id}', '${first_name} ${last_name}', '${email}', '${emp_cnpj}', '2', '${classificacao}')`)
+      pool.close()
     },
     {
       connection: new IORedis(redis.url),
