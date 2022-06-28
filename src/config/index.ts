@@ -1,5 +1,6 @@
 export const redis = {
   url: process.env.REDIS_URL || '',
+  maxRetriesPerRequest: null,
 }
 
 export const mssql = {
@@ -24,4 +25,8 @@ export const mailConfig = {
 
 export const secret = {
   token: process.env.ACCESS_TOKEN_SECRET || '',
+}
+
+export const dropbox = {
+  secret: process.env.DBX_SECRET || '',
 }

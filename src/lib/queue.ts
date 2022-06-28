@@ -12,7 +12,7 @@ const queues = Object.values(jobs).map((job) => ({
 
 export default {
   queues,
-  add(name: string, data: Job) {
+  add(name: string, data: Job | Express.Multer.File) {
     const queue = this.queues.find((queue) => queue.name === name)
 
     return queue?.bull.add(name, data)
